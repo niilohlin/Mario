@@ -75,7 +75,7 @@ display :: Model -> Graphics SDLEngine
 display mario = Graphics2D $ collage $ [drawMario mario]
 
 subscriptions :: Sub SDLEngine Action
-subscriptions = Sub.batch [ Time.fps 60 $ Animate, Keyboard.presses Input ]
+subscriptions = Sub.batch [ Time.fps 60 (\dt -> Animate (dt/10)), Keyboard.presses Input ]
 
 main :: IO ()
 main = do
